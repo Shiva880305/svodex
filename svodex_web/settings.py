@@ -54,11 +54,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'svodex_web.wsgi.application'
 
+# Konfigurace databáze pro Vercel Postgres
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('POSTGRES_URL')
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
