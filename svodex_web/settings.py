@@ -5,6 +5,7 @@ Django settings for svodex_web project.
 import os
 from pathlib import Path
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
 DEBUG = False
@@ -19,12 +20,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'reference',
     'ckeditor',
-    'ckeditor_uploader', # Přidáno
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # Přidáno
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,12 +75,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Ujisti se, že tato cesta je správná
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# CKEditor nastavení
 CKEDITOR_UPLOAD_PATH = 'uploads/ckeditor/'
 CKEDITOR_CONFIGS = {
     'default': {
@@ -87,3 +86,5 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
     },
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
