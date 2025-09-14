@@ -2,4 +2,4 @@ Django
 Pillow
 gunicorn
 whitenoise
-ckeditor
+django-ckeditor
