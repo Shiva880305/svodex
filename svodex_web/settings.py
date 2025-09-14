@@ -8,7 +8,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*^6z9ui4wmh)e5^7)()ec7l+)ko=lv(7rrm7m1(24#@9o6x((@'
 DEBUG = False
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['lluciano.pythonanywhere.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
