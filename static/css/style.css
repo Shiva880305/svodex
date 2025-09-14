@@ -327,14 +327,7 @@ header ul li a:hover {
     display: none;
 }
 
-.stat-item h3 {
-    font-size: 5rem;
-    font-weight: 900;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-    margin-top: 2.2rem; /* Zmenšení odsazení nahoru */
-}
+ 
 
 .stat-item p {
     font-size: 1rem;
