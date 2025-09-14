@@ -12,13 +12,12 @@
             "dest": "/static/$1"
         },
         {
+            "src": "/media/(.*)",
+            "dest": "/media/$1"
+        },
+        {
             "src": "/(.*)",
             "dest": "svodex_web/wsgi.py"
         }
-    ],
-    "build": {
-        "env": {
-            "STATIC_ROOT": "staticfiles"
-        }
-    }
+    ]
 }
