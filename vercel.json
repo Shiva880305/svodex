@@ -1,19 +1,24 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "svodex_web/wsgi.py",
-      "use": "@vercel/python"
+    "version": 2,
+    "builds": [
+        {
+            "src": "svodex_web/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "svodex_web/wsgi.py"
+        }
+    ],
+    "build": {
+        "env": {
+            "STATIC_ROOT": "staticfiles"
+        }
     }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "svodex_web/wsgi.py"
-    }
-  ]
 }
