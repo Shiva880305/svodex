@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ service.title }} - Svodex{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <a href="{% url 'service_list' %}" class="back-link"><i class="fas fa-arrow-left"></i> Zpět na služby</a>
+            <h1>{{ service.title }}</h1>
+            <p>{{ service.description }}</p>
+        </div>
+    </section>
+
+    <section class="service-detail-content">
+        <div class="container">
+            <div class="service-text-content">
+                {{ service.content|safe }}
+            </div>
+
+            {% if service.images.all %}
+                <div class="service-gallery">
+                    {% for image in service.images.all %}
+                        <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="contact-form-block">
+                <h3>Máte zájem o tuto službu?</h3>
+                <p>Napište nám a my vám rádi připravíme nabídku na míru.</p>
+                <form action="{% url 'contact' %}" method="post" class="main-contact-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Vaše jméno" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Váš email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Vaše zpráva" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Odeslat poptávku</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

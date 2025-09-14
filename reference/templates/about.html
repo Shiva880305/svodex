@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}O nás - Svodex{% endblock %}
+
+{% block content %}
+    <section class="contact-header-section">
+        <div class="container">
+            <p class="overline-text">O NAŠÍ SPOLEČNOSTI</p>
+            <h1>Spojení zkušeností a nové energie.</h1>
+            <p class="header-description">Jsme **Svodex**, mladá a dynamická společnost, která přináší na trh s **bezpečnostními silničními systémy** novou energii a inovativní přístup. Naše pevné základy ovšem stojí na **více než 10 letech zkušeností** a know-how, které jsme získali jako nástupnická společnost po přeměně firmy SPEMAX s.r.o.</p>
+        </div>
+    </section>
+
+    <section class="about-page-content animated-section">
+        <div class="container about-content-wrapper">
+            <div class="about-text-content animate__animated animate__fadeInLeft">
+                <p>Naše práce nezačíná ani nekončí samotnou montáží. Díky odbornosti, technickým znalostem a zkušenostem s normami a legislativou dokážeme navrhnout ideální řešení pro každou stavbu. Každý detail – ať už technický či realizační – je pro nás stejně důležitý jako celek. Proto nabízíme řešení, která jsou nejen kvalitní a funkční, ale především dlouhodobě spolehlivá.</p>
+                <p>Velkou výhodou je naše strategické partnerství s předními výrobci svodidel, díky kterému nabízíme moderní a prověřené produkty odpovídající nejvyšším standardům bezpečnosti i kvality – a to vždy za férovou cenu.</p>
+                <p>Ačkoliv jsme mladá firma, do oboru přinášíme energii nové generace a zároveň navazujeme na tradici. Vznikli jsme v roce 2025 jako nástupnická společnost v rámci přeměny firmy SPEMAX s.r.o., jejíž zkušenosti a know-how dále rozvíjíme.</p>
+            </div>
+             <div class="about-images animate__animated animate__fadeInRight">
+                <img src="{% static 'img/about-us-1.webp' %}" alt="Tým Svodex" class="about-img-main">
+                <img src="{% static 'img/about-us-2.webp' %}" alt="Práce Svodex" class="about-img-small">
+            </div>
+        </div>
+    </section>
+{% endblock %}

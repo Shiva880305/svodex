@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Úvodní stránka - Svodex{% endblock %}
+
+{% block content %}
+    <section class="hero-section hero-with-bg">
+        <div class="hero-background" style="background-image: url('{% static 'img/hero-image.webp' %}')"></div>
+        <div class="container hero-content-container">
+            <div class="text-content">
+                <h1>Bezpečnost postavená na zkušenostech</h1>
+                <p class="subtitle">Svodex přináší na trh s bezpečnostními silničními systémy novou energii a inovativní přístup. Navazujeme na dlouholeté zkušenosti a nabízíme kompletní řešení pro vaši bezpečnost.</p>
+                <div class="cta-buttons">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Kontaktujte nás</a>
+                    <a href="{% url 'about' %}" class="btn btn-outline">Zjistěte více o nás</a>
+                </div>
+            </div>
+            <div class="hero-image-placeholder">
+            </div>
+        </div>
+    </section>
+
+<section class="stats-section">
+    <div class="container stats-grid">
+        {% for stat in stats %}
+        <div class="stat-item">
+            <h3 class="counter" data-target="{{ stat.number }}">{{ stat.number }}</h3>
+            <p>{{ stat.description }}</p>
+        </div>
+        {% empty %}
+        <p>Momentálně nejsou dostupné žádné statistiky.</p>
+        {% endfor %}
+    </div>
+</section>
+
+    <section class="about-section animated-section">
+        <div class="container about-content-wrapper">
+            <div class="about-images animate__animated animate__fadeInLeft">
+                <img src="{% static 'img/about-us-1.webp' %}" alt="Tým Svodex" class="about-img-main">
+                <img src="{% static 'img/about-us-2.webp' %}" alt="Práce Svodex" class="about-img-small">
+            </div>
+            <div class="about-text-content animate__animated animate__fadeInRight">
+                <p class="overline-text">O SPOLEČNOSTI SVODEX</p>
+                <h2>Bezpečnost postavená na dlouholetých zkušenostech</h2>
+                <p>Jsme **Svodex**, mladá a dynamická společnost, která přináší na trh s **bezpečnostními silničními systémy** novou energii a inovativní přístup. Naše pevné základy ovšem stojí na **více než 10 letech zkušeností** a know-how, které jsme získali jako nástupnická společnost po přeměně firmy SPEMAX s.r.o.</p>
+                <p>Naše práce nezačíná ani nekončí samotnou montáží. Díky odbornosti, technickým znalostem a zkušenostem s normami a legislativou dokážeme navrhnout ideální řešení pro každou stavbu. Každý detail – ať už technický či realizační – je pro nás stejně důležitý jako celek. Proto nabízíme řešení, která jsou nejen kvalitní a funkční, ale především dlouhodobě spolehlivá.</p>
+                <a href="{% url 'about' %}" class="btn btn-primary">Více o nás</a>
+            </div>
+        </div>
+    </section>
+    
+<section class="main-content-section services-section animated-section">
+    <div class="container">
+        <div class="section-header animate__animated animate__fadeInUp">
+            <h2>Naše služby</h2>
+            <p class="section-description">Nabízíme široké portfolio služeb a produktů v oblasti svodidlových systémů. Ať už potřebujete zajistit bezpečnost na silnici, mostě nebo speciální řešení na míru, jsme tu pro vás.</p>
+        </div>
+        <div class="service-cards-grid animate__animated animate__fadeInUp">
+            {% for service in services %}
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="{{ service.icon }} fa-3x"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="{% url 'service_detail' pk=service.pk %}" class="service-card-link">{{ service.title }}</a></h3>
+                        <p>{{ service.description|truncatechars:100 }}</p>
+                        <a href="{% url 'service_detail' pk=service.pk %}" class="learn-more-link">Více informací <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-services-message">Momentálně nemáme žádné služby k zobrazení. Přidejte je prosím v administračním panelu.</p>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5 animate__animated animate__fadeInUp">
+            <a href="{% url 'service_list' %}" class="btn btn-primary">Prohlédnout všechny služby</a>
+        </div>
+    </div>
+</section>
+
+    <section class="references-text-section main-content-section animated-section">
+    <div class="container">
+        <div class="section-header animate__animated animate__fadeInUp">
+            <h2>Poslední reference</h2>
+            <p class="section-description">Projděte si naše nejnovější projekty, kde jsme uplatnili naše bohaté zkušenosti a inovativní přístup k bezpečnosti silnic. </p>
+        </div>
+        <div class="references-list-grid animate__animated animate__fadeInUp">
+            {% for reference in references_home %}
+            <div class="reference-item-card">
+                <h3>{{ reference.title }}</h3>
+                <p>{{ reference.location }}</p>
+                <a href="{% url 'reference_detail' pk=reference.pk %}" class="reference-link">Prohlédnout projekt <i class="fas fa-arrow-right"></i></a>
+            </div>
+            {% empty %}
+            <p class="no-references-message">Momentálně nemáme žádné reference k zobrazení. Přidejte je prosím v administračním panelu.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Svodex{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <a href="{% url 'home' %}" class="logo-link">
+            <img src="{% static 'img/logo_wh.png' %}" alt="Svodex Logo" class="logo">
+        </a>
+        <div class="header-content">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Domů</a></li>
+                    <li><a href="{% url 'about' %}">O nás</a></li>
+                    <li><a href="{% url 'service_list' %}">Nabídka služeb</a></li>
+                    <li><a href="{% url 'reference_list' %}">Reference</a></li>
+                    <li><a href="{% url 'certificate_list' %}">Certifikáty</a></li>
+                    <li><a href="{% url 'contact' %}">Kontakty</a></li>
+                </ul>
+            </nav>
+            <div class="contact-info-header">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+420123456789">+420 123 456 789</a>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="main-footer">
+    <div class="container footer-content-wrapper">
+        <div class="footer-section">
+            <a href="{% url 'home' %}" class="logo-link">
+                <img src="{% static 'img/logo_wh.png' %}" alt="Svodex Logo" class="footer-logo">
+            </a>
+            <p class="company-desc">
+                Jsme dynamická společnost, která přináší na trh s bezpečnostními silničními systémy novou energii a inovativní přístup.
+            </p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Odkazy</h3>
+            <ul>
+                <li><a href="{% url 'about' %}">O nás</a></li>
+                <li><a href="{% url 'service_list' %}">Nabídka služeb</a></li>
+                <li><a href="{% url 'reference_list' %}">Reference</a></li>
+                <li><a href="{% url 'contact' %}">Kontakty</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Kontakty</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Pražská 123, 678 01 Boskovice</li>
+                <li><i class="fas fa-phone-alt"></i> +420 123 456 789</li>
+                <li><i class="fas fa-envelope"></i> info@svodex.cz</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Certifikáty</h3>
+            <ul>
+                <li><a href="{% url 'certificate_list' %}">Seznam certifikátů</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 Svodex | Powered by <a href="#">AXIMI</a> | Všechna práva vyhrazena.
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Skript pro animace při scrollování
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__fadeInUp');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animated-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Skript pro mobilní menu
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.header-content').classList.toggle('active');
+        });
+    });
+</script>
+
+<script src="{% static 'js/animation.js' %}"></script>
+
+</body>
+</html>

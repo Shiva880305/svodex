@@ -1,0 +1,29 @@
+/* static/admin/css/admin.css */
+
+#header {
+    background: #000000;
+    color: #ffffff;
+    border-bottom: 2px solid #D2232A;
+}
+
+#branding h1 {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+#branding h1 a:link,
+#branding h1 a:visited {
+    color: #ffffff;
+}
+
+#branding h1 a:hover {
+    color: #D2232A;
+}
+
+.module h2,
+.module h3,
+.changelist-form-container h1,
+.change-form h1 {
+    color: #D2232A;
+    font-weight: 700;
+}

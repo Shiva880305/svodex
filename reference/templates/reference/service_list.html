@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nabídka služeb - Svodex{% endblock %}
+
+{% block content %}
+    <section class="contact-header-section">
+        <div class="container">
+            <p class="overline-text">NAŠE NABÍDKA</p>
+            <h1>Kompletní řešení pro vaši bezpečnost.</h1>
+            <p class="header-description">Nabízíme široké portfolio služeb a produktů v oblasti svodidlových systémů. Ať už potřebujete zajistit bezpečnost na silnici, mostě nebo speciální řešení na míru, jsme tu pro vás.</p>
+        </div>
+    </section>
+
+    <section class="services-page-section">
+        <div class="container">
+            <div class="service-cards-grid">
+                {% for service in services %}
+                <a href="{% url 'service_detail' pk=service.pk %}" class="service-card-link">
+                    <div class="service-card">
+                        <div class="card-icon">
+                            <i class="{{ service.icon }} fa-3x"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>{{ service.title }}</h3>
+                            <p>{{ service.description|truncatewords:20 }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% empty %}
+                <p class="no-services-message">Momentálně nejsou dostupné žádné služby. Přidejte je prosím v administračním panelu.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

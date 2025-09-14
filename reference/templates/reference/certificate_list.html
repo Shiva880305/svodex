@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Certifikáty a osvědčení - Svodex{% endblock %}
+
+{% block content %}
+    <section class="contact-header-section">
+        <div class="container">
+            <p class="overline-text">NAŠE KVALITA A OVĚŘENÍ</p>
+            <h1>Certifikáty a osvědčení</h1>
+            <p class="header-description">Naše certifikáty jsou důkazem, že splňujeme nejpřísnější normy a standardy v oblasti bezpečnosti a kvality. Klienti nám mohou důvěřovat, protože naše práce je prověřena a ověřena nezávislými institucemi.</p>
+        </div>
+    </section>
+
+    <section class="certificates-gallery-section">
+        <div class="container">
+            <div class="certificates-grid">
+                {% for cert in certificates %}
+                <div class="certificate-item">
+                    {% if cert.image %}
+                    <div class="certificate-image-wrapper">
+                        <a href="{{ cert.image.url }}" data-lightbox="certificate-gallery" data-title="{{ cert.name }}">
+                            <img src="{{ cert.image.url }}" alt="{{ cert.name }}">
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="certificate-image-wrapper">
+                         <a href="{% static 'img/placeholder_cert.jpg' %}" data-lightbox="certificate-gallery" data-title="{{ cert.name }}">
+                            <img src="{% static 'img/placeholder_cert.jpg' %}" alt="{{ cert.name }}">
+                        </a>
+                    </div>
+                    {% endif %}
+                    <div class="certificate-info">
+                        <h3>{{ cert.name }}</h3>
+                        {% if cert.issue_date %}
+                            <p class="issue-date">Datum vydání: {{ cert.issue_date }}</p>
+                        {% endif %}
+                        {% if cert.file %}
+                            <a href="{{ cert.file.url }}" target="_blank" class="download-link">
+                                <i class="fas fa-download"></i>
+                                Stáhnout
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <p class="no-certificates-message">Momentálně nejsou dostupné žádné certifikáty.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

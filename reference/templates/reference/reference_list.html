@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reference - Svodex{% endblock %}
+
+{% block content %}
+    <section class="contact-header-section">
+        <div class="container">
+            <p class="overline-text">NAŠE PROJEKTY</p>
+            <h1>Realizujeme projekty, které mluví za nás.</h1>
+            <p class="header-description">Projděte si naše vybrané projekty a poznejte kvalitu a spolehlivost, kterou přinášíme do každého detailu.</p>
+        </div>
+    </section>
+
+    <section class="projects-gallery-section">
+        <div class="container">
+            <div class="projects-grid">
+                {% for reference in references %}
+                <div class="project-item">
+                    <div class="project-image-wrapper">
+                        <a href="{% url 'reference_detail' pk=reference.pk %}">
+                            <img src="{{ reference.photo.url }}" alt="{{ reference.title }}">
+                        </a>
+                    </div>
+                    <div class="project-info">
+                        <h3><a href="{% url 'reference_detail' pk=reference.pk %}">{{ reference.title }}</a></h3>
+                        <p class="project-location">{{ reference.location }}</p>
+                        <a href="{% url 'reference_detail' pk=reference.pk %}" class="project-link">
+                            Prohlédnout projekt <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="no-projects-message">Momentálně nemáme žádné reference k zobrazení. Přidejte je prosím v administračním panelu.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

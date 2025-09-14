@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ reference.title }} - Svodex{% endblock %}
+
+{% block content %}
+<section class="reference-detail-section">
+    <div class="container">
+        <div class="reference-header">
+            <a href="{% url 'reference_list' %}" class="back-link"><i class="fas fa-arrow-left"></i> Zpět na přehled</a>
+            <h1>{{ reference.title }}</h1>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> {{ reference.location }}</p>
+        </div>
+        
+        <div class="reference-main-photo">
+            <img src="{{ reference.photo.url }}" alt="{{ reference.title }}">
+        </div>
+
+        <div class="reference-body">
+            <div class="reference-description">
+                {{ reference.description|safe|linebreaks }}
+            </div>
+
+{% if reference.images.all %}
+    <div class="reference-gallery">
+        {% for image in reference.images.all %}
+            <a href="{{ image.image.url }}" data-lightbox="reference-gallery" data-title="{{ image.caption }}">
+                <img src="{{ image.image.url }}" alt="{{ image.caption|default:reference.title }}">
+            </a>
+        {% endfor %}
+    </div>
+{% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
