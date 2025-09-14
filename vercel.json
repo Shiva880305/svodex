@@ -8,8 +8,15 @@
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/"
+    },
+    {
       "src": "/(.*)",
       "dest": "svodex_web/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.10"
+  }
 }

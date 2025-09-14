@@ -5,7 +5,7 @@ Django settings for svodex_web project.
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-*^6z9ui4wmh)e5^7)()ec7l+)ko=lv(7rrm7m1(24#@9o6x((@'
 DEBUG = False
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
