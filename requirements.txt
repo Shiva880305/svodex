@@ -3,4 +3,3 @@ Pillow
 gunicorn
 whitenoise
 django-ckeditor
-sqlite3
